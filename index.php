@@ -47,16 +47,20 @@ $f3->route('GET /hello/@name', function($f3, $params) {
 //Define a route using parameters
 $f3->route('GET /language/@lang', function($f3, $params) {
     switch($params['lang']) {
-        case 'swahili' :
+        case 'swahili':
             echo 'Jumbo!'; break;
-        case 'spanish' :
+        case 'spanish':
             echo 'Hola!'; break;
-        case 'russian' :
+        case 'russian':
             echo 'Privet!'; break;
-        case 'farsi' :
+        case 'farsi':
             echo 'Salam!'; break;
+            //Reroute to another page
+        case 'french':
+            $f3->reroute('/'); break;
+            //404 error
         default :
-            echo 'Hello!';
+            $f3->error(404);
     }
 }
 );
